@@ -7,10 +7,8 @@ fi
 if [[ -e /app ]]; then
     if [[ ! -e /mnt/app ]]; then
         mv -n /app/* /mnt/.
-        rmdir /app
-    else
-        rm -fr /app
     fi
+    rm -fr /app
 fi
 
 if [[ -f /mnt/requirements.txt ]]; then
