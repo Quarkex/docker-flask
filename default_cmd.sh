@@ -1,9 +1,15 @@
 #!/bin/bash
 
-if [[ ! -e /mnt/app ]]; then
-    if [[ -e /app ]]; then
+if [[ -e /app/default_cmd.sh ]]; then
+    rm /app/default_cmd.sh
+fi
+
+if [[ -e /app ]]; then
+    if [[ ! -e /mnt/app ]]; then
         mv /app/* /mnt/.
         rmdir /app
+    else
+        rm -fr /app
     fi
 fi
 
