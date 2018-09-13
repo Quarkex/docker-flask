@@ -13,22 +13,22 @@ if [[ -e /app ]]; then
     fi
 fi
 
-if [[ -f /mnt/app.py ]]; then
-
-    if [[ -f /mnt/requirements.txt ]]; then
-        if [[ -f /var/cache/pip_cache ]]; then
-            # check if files are different
-            diff /var/cache/pip_cache /mnt/requirements.txt &>/dev/null
-            # if they are...
-            if [[ $? == 1 ]]; then
-                cp /mnt/requirements.txt /var/cache/pip_cache
-                pip install -r /mnt/requirements.txt
-            fi
-        else
+if [[ -f /mnt/requirements.txt ]]; then
+    if [[ -f /var/cache/pip_cache ]]; then
+        # check if files are different
+        diff /var/cache/pip_cache /mnt/requirements.txt &>/dev/null
+        #if they are...
+        if [[ $? == 1 ]]; then
             cp /mnt/requirements.txt /var/cache/pip_cache
             pip install -r /mnt/requirements.txt
         fi
+    else
+        cp /mnt/requirements.txt /var/cache/pip_cache
+        pip install -r /mnt/requirements.txt
     fi
+fi
+
+if [[ -f /mnt/app.py ]]; then
 
     /usr/bin/env python /mnt/app.py
 else
