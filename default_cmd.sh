@@ -2,7 +2,8 @@
 
 if [[ ! -e /mnt/app ]]; then
     if [[ -e /app ]]; then
-        mv /app /mnt/app
+        mv /app/* /mnt/.
+        rmdir /app
     fi
 fi
 
