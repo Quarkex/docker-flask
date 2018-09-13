@@ -16,7 +16,7 @@ diff -N /var/cache/pip_cache /mnt/requirements.txt &>/dev/null
 #if they are...
 if [[ $? == 1 ]]; then
     cp /mnt/requirements.txt /var/cache/pip_cache
-    pip install -r /mnt/requirements.txt
+    pip3 install -r /mnt/requirements.txt
 fi
 
 if [[ -f /mnt/app.py ]]; then
