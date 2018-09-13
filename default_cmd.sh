@@ -6,7 +6,7 @@ fi
 
 if [[ -e /app ]]; then
     if [[ ! -e /mnt/app ]]; then
-        mv /app/* /mnt/.
+        mv -n /app/* /mnt/.
         rmdir /app
     else
         rm -fr /app
@@ -30,7 +30,7 @@ fi
 
 if [[ -f /mnt/app.py ]]; then
 
-    /usr/bin/env python /mnt/app.py
+    /usr/bin/env python3 /mnt/app.py
 else
     exec bash
 fi
