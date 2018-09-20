@@ -6,11 +6,9 @@ fi
 
 if [[ -e /app ]]; then
     if [[ ! -e /mnt/app ]]; then
-        mv /app/* /mnt/.
-        rmdir /app
-    else
-        rm -fr /app
+        mv -n /app/* /mnt/.
     fi
+    rm -fr /app
 fi
 
 if [[ -f /mnt/requirements.txt ]]; then
@@ -20,17 +18,17 @@ if [[ -f /mnt/requirements.txt ]]; then
         #if they are...
         if [[ $? == 1 ]]; then
             cp /mnt/requirements.txt /var/cache/pip_cache
-            pip install -r /mnt/requirements.txt
+            pip3 install -r /mnt/requirements.txt
         fi
     else
         cp /mnt/requirements.txt /var/cache/pip_cache
-        pip install -r /mnt/requirements.txt
+        pip3 install -r /mnt/requirements.txt
     fi
 fi
 
 if [[ -f /mnt/app.py ]]; then
 
-    /usr/bin/env python /mnt/app.py
+    /usr/bin/env python3 /mnt/app.py
 else
     exec bash
 fi
