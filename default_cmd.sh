@@ -20,7 +20,6 @@ if [[ $? == 1 ]]; then
 fi
 
 if [[ -f /mnt/app.py ]]; then
-
     /usr/bin/env python3 /mnt/app.py
 else
     exec bash
